@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Template Strings</title>
+
+  <style>
+    .hl {
+      background: #ffc600;
+    }
+  </style>
+</head>
+<body>
+  
+  <script>
+    // Introduction
+    const name = 'Snickers';
+    const age = 2;
+    const sentence = `My dog ${name} is ${age * 7} years old.`;
+    console.log(sentence);
+
+    // Introduction End
+
+    // Creating HTML Fragments with Template Literals
+
+    // Creating HTML Markup
+    const person = {
+      name: 'Aakash',
+      job: 'Web Developer',
+      city: 'Kathmandu',
+      bio: 'There goes my bio!'
+    };
+
+    const markup = `
+      <div class="person">
+        <h2>
+          ${person.name}, 
+          <span class="job">${person.job}</span>
+        </h2>
+        <p class="location">${person.city}</p>
+        <p class="bio">${person.bio}</p>
+      </div>
+    `;
+
+    //document.body.innerHTML = markup;
+
+    // Nested Template Strings
+    const dogs = [
+      { name: 'Snickers', age: 2 },
+      { name: 'Hugo', age: 8 },
+      { name: 'Sunny', age: 1 }
+    ];
+
+    const dogMarkup = `
+      <ul class="dogs">
+        ${dogs.map(dog => `
+          <li>
+            ${dog.name} is ${dog.age * 7}.
+          </li>`)
+        .join('')} 
+      </ul>
+    `;
+
+    //document.body.innerHTML = dogMarkup;
+    
+    // Using for a IF statement using `terninary operator`
+    const song = {
+      name: 'Dying to Live',
+      artist: 'Tupac',
+      featuring: 'Biggie smalls'
+    };
+
+    const songMarkup = `
+      <div class="song">
+        <p>
+          ${song.name} - ${song.artist}
+          ${song.featuring ? `(Featuring ${song.featuring})` : ''}
+        </p>
+      </div>
+    `;
+
+    //document.body.innerHTML = songMarkup;
+
+    // Complex Example
+    const beer = {
+      name: 'Belgian Wit',
+      brewery: 'Steam Whistle Brewery',
+      keywords: ['pale', 'cloudy', 'spiced', 'crisp']
+    };
+
+    function renderKeywords(keywords) {
+      return `
+        <ul>
+          ${keywords.map(keyword => `<li>${keyword}</li>`).join('')}
+        </ul>
+      `
+    }
+
+    const beerMarkup = `
+      <div class="beer">
+        <h2>${beer.name}</h2>
+        <p class="brewery">${beer.brewery}</p>
+        ${renderKeywords(beer.keywords)}
+      </div>
+    `;
+
+    //document.body.innerHTML = beerMarkup;
+
+    // Creating HTML Fragments with Template Literals End
+
+    // Tagged Template Literals
+    function highlight(strings, ...values) {
+      let str = '';
+      strings.forEach((string, i) => {
+        str += `${string} <span contenteditable class="hl">${values[i] || ''}</span>`;
+      });
+      return str;
+    }
+
+    const newName = 'Snickers';
+    const newAge = 100;
+
+    const newSentence = highlight`My dog name is ${newName} and he is ${newAge} years old.`;
+
+    document.body.innerHTML = newSentence;
+
+    // Tagged Template Literals End
+
+  </script>
+</body>
+</html>

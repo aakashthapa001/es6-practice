@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>New Variables - Creation, Updating, Scoping</title>
+</head>
+<body>
+  <script>
+    // var scoping reference
+    function setWidth() {
+      var width = 100;
+      console.log(width);
+    }
+    setWidth();
+
+    var age = 100;
+    if(age > 12) {
+      let dogYears = age * 7;
+      console.log(`You are ${dogYears} dog years old!`)
+    }
+
+    // let and const in real life
+    {
+      const name = 'wes';
+      console.log(name);
+    }
+
+    for(let i = 0; i < 10; i++) {
+      console.log(i);
+
+      setTimeout(function() {
+        console.log('The number is ' + i);
+      }, 1000)
+    }
+
+    // temporal dead zone
+    // console.log(pizza); // -> Error not defined
+    const pizza = 'Deep Dish';
+    
+
+  </script>
+</body>
+</html>
