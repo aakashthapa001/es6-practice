@@ -83,6 +83,35 @@
     console.log(inRing, outRing);
 
     // SWAPING VARIABLES WITH DESTRUCTURING End
+
+
+    // DESTRUCTURING FUNCTIONS
+    // EG: 1 => Multiple returns
+    function convertCurrency(amount) {
+      const converted = {
+        USD: amount * 0.76,
+        GPB: amount * 0.53,
+        AUD: amount * 1.01,
+        MEX: amount * 13.30
+      };
+      return converted;
+    }
+
+    const { USD, GPB, AUD } = convertCurrency(100);
+    console.log(USD, GPB, AUD);
+
+    // EG: 1 => Default named arguments
+    function tipCalc({ total = 200, tip = 0.15, tax = 0.13 }) {
+      return total + (tip * total) + (tax * total);
+    }
+
+    const bill = tipCalc({ total: 200, tax: 0.19 });
+    console.log(bill);
+
+    // What if we pass nothing? => Error
+
+
+    // DESTRUCTURING FUNCTIONS End
     
   </script>
 </body>
