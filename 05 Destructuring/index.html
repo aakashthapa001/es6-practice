@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Destructuring</title>
+</head>
+<body>
+  
+  <script>
+    // Destructuring Objects
+    // EG: 1 => Simple object data
+    const person = {
+      first: 'Aakash',
+      last: 'Thapa',
+      country: 'Nepal',
+      city: 'Kathmandu',
+      twitter: '@chimseryOo'
+    };
+
+    // const { first, last, twitter } = person;
+    // fisrt === person.first
+    // console.log(first, last, twitter);
+
+    // EG: 2 => Nested object data
+    const aakash = {
+      first: 'Aakash',
+      last: 'Thapa',
+      links: {
+        social: {
+          twitter: 'https://twitter.com/chimseryOo',
+          facebook: 'https://www.facebook.com/thapa.aakash100'
+        },
+        web: {
+          blog: 'https://aakashThapa.com'
+        }
+      }
+    };
+
+    // You can rename your key when destructuring like:- twitter:tweet
+    const { twitter:tweet, facebook:fb } = aakash.links.social;
+    // after => twitter === tweet
+
+    // EG: 2 => Setting Defaults
+    const settings = {width: 300, color: 'black'}; // needs height, fontSize
+    const { width = 100, height = 100, color = 'hotpink', fontSize = 30 } = settings;
+
+    // -> width === 300, height === 100, color === 'black', fontSize === 30
+
+    // EG: 3 => Object Destructuring with vatiable renaming and default values
+    const { w: newWidth = 400, h: newHeight = 500 } = { w: 800 };
+
+    // Destructuring Objects End
+
+    
+  </script>
+</body>
+</html>
