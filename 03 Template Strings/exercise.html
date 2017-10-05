@@ -5,12 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Tagged Template Strings Excercise</title>
+
+  <style>
+    abbr {
+      border-bottom:1px dotted grey;
+    }
+  </style>
 </head>
 <body>
 
   <div class="bio"></div>
 
+  <div class="sani"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/0.8.2/purify.min.js"></script>
+
   <script>
+    // Dictionary Example with Template Strings
     const dict = {
       HTML: 'Hyper Text Markup Language',
       CSS: 'Cascading Style Sheets',
@@ -40,6 +51,26 @@
 
     p.innerHTML = sentence;
     bio.appendChild(p);
+
+    // Dictionary Example with Template Strings End
+
+    // Sanitize User Data with Tagged Templates
+    function sanitize(strings, ...values) {
+      const dirty = strings.reduce((prev, next, i) => `${prev}${next}${values[i] || ''}`);
+      return DOMPurify.sanitize(dirty);
+    }
+
+    const firstName = 'Aakash';
+    const aboutMe = `I love to do evil <img src="http://unsplash.it/100/100?random" onload="alert('you got hacked');" />`;
+
+    const html = sanitize`
+      <h3>${firstName}</h3>
+      <p>${aboutMe}</p>
+    `;
+    const sani = document.querySelector('.sani');
+    sani.innerHTML = html;
+
+    // Sanitize User Data with Tagged Templates End
 
   </script>
   
