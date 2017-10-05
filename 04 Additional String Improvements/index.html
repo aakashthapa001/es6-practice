@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Additional String Improvements</title>
+</head>
+<body>
+
+  <script>
+    const course = 'ABZ2';
+    const flightNumber = '30-GV2058-vl';
+    const accountNumber = '8465123851RT200A';
+
+    const make = 'VW';
+    const model = 'T5';
+    const color = 'Matte Black';
+
+    // .startsWith()
+    console.log('startsWith ', course.startsWith('AB')); // -> true
+    console.log('startsWith ', course.startsWith('ab')); // -> false
+
+    // You can skip characters with second parameter
+    console.log('startsWith ', flightNumber.startsWith('GV', 3)); // -> true
+
+    // .endsWith()
+    console.log('endsWith ', flightNumber.endsWith('vl')); // -> true
+    console.log('endsWith ', course.endsWith('ab')); // -> false
+
+    // You can ckeck if characters ends with a string in the middle by passing second parameter where you want check the end
+    console.log('endsWith ', accountNumber.endsWith('RT', 12)); // -> true
+
+    // .includes()
+    console.log('includes ', flightNumber.includes('vl')); // -> true
+    console.log('includes ', course.includes('VL')); // -> false
+    console.log('includes ', accountNumber.includes('851RT')); // -> true
+
+    // .repeat()
+    function leftPad(str, length = 20) {
+      return `→ ${' '.repeat(length - str.length)}${str}`;
+    }
+
+    console.log(leftPad(make))
+    console.log(leftPad(model))
+    console.log(leftPad(color))
+
+    // FOR FUN
+    console.log(`${'💃' * 5}`.repeat(10) + ' Batman!');  // -> NaNNaNNaNNaNNaNNaNNaNNaNNaNNaN Batman!
+
+  </script>  
+</body>
+</html>
